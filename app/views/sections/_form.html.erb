@@ -1,0 +1,56 @@
+<%= form_with(model: section, local: true) do |form| %>
+  <% if section.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(section.errors.count, "error") %> prohibited this section from being saved:</h2>
+
+      <ul>
+        <% section.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.select :year, options_for_select(1980..2021) %>
+    <%#= form.number_field :year %>
+  </div>
+
+  <br><hr><br>
+
+  <div class="field">
+    <%= form.label :"Course Number" %>
+    <%= form.collection_select :course_id, Course.all, :id, :dept_name_course_num %>
+    <%#= form.text_field :course_id %>
+  </div>
+
+  <br><hr><br>
+
+  <div class="field">
+    <%= form.label :professor_id %>
+    <%= form.collection_select :professor_id, Professor.all, :id, :name %>
+    <%#= form.text_field :professor_id %>
+  </div>
+
+  <br><hr><br>
+
+  <div class="field">
+    <%= form.label :semester_id %>
+    <%= form.collection_select :semester_id, Semester.all, :id, :semester %>
+    <%#= form.text_field :semester_id %>
+  </div>
+
+  <br><hr><br>
+
+  <div class="field">
+    <%= form.label :"Students" %>
+    <%= form.collection_check_boxes(:student_ids, @students, :id, :name) %>
+  </div>
+
+  <br><hr><br>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

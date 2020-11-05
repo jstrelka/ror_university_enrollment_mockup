@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @section.year %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @section.course.department.name %>
+  <%= @section.course.number %>
+</p>
+
+<p>
+  <strong>Professor:</strong>
+  <%= @section.professor.name %>
+</p>
+
+<p>
+  <strong>Semester:</strong>
+  <%= @section.semester.semester %>
+</p>
+
+<figure>
+  <figcaption><strong>Students:</strong></figcaption>
+  <ul>
+    <% @section.students.each do |student| %>
+      <li> <%= student.name %></li>
+    <% end %>
+  </ul>
+</figure>
+
+<%= link_to 'Edit', edit_section_path(@section) %> |
+<%= link_to 'Back', sections_path %>

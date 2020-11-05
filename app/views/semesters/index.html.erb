@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Semesters</h1>
+
+<%= form_tag semesters_path, :method => "get" do %>
+  <%= label_tag(:search, "Please enter a SEMESTER name:") %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag("Search", :semester => nil) %>
+<% end %>
+
+<br>
+<hr>
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Semester</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @semesters.each do |semester| %>
+      <tr>
+        <td><%= semester.semester %></td>
+        <td><%= link_to 'Show', semester %></td>
+        <td><%= link_to 'Edit', edit_semester_path(semester) %></td>
+        <td><%= link_to 'Destroy', semester, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Semester', new_semester_path %>
