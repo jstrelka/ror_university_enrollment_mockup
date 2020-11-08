@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Rails assignment-03-jstrelka: development" uuid="93af60b1-17a0-46ed-bb99-fb687c109494">
-      <driver-ref>sqlite.xerial</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\jstre\OneDrive\bs_comp_sci_coursework\fall_20\cs_3710\assignments\assignment-03-jstrelka\db\development.sqlite3</jdbc-url>
-    </data-source>
     <data-source source="LOCAL" name="Rails assignment-03-jstrelka: test" uuid="75c67275-0134-484c-9962-c41e1070d511">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
@@ -16,6 +8,14 @@
       <remarks>$PROJECT_DIR$/config/database.yml</remarks>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\jstre\OneDrive\bs_comp_sci_coursework\fall_20\cs_3710\assignments\assignment-03-jstrelka\db\test.sqlite3</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails assignment-03-jstrelka: development" uuid="94004682-4bcc-44c4-b6d7-5a9bba270e4e">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\jstre\OneDrive\bs_comp_sci_coursework\fall_20\cs_3710\assignments\assignment-05-jstrelka\db\development.sqlite3</jdbc-url>
     </data-source>
   </component>
 </project>

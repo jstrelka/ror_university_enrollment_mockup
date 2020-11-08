@@ -1,0 +1,116 @@
+<html>
+<head>
+    <title>ASSIGNMENT 5 SPA</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="Itemlist">
+
+    <button v-on:click="selected=1">Departments</button>
+    <button v-on:click="selected=2">Courses</button>
+    <button v-on:click="selected=3">Professors</button>
+    <button v-on:click="selected=4">Semesters</button>
+    <button v-on:click="selected=5">Sections</button>
+    <button v-on:click="selected=6">Students</button>
+
+    <ul>
+        <span v-if="selected === 1">
+            <div v-for="department in departments">
+                <li>{{department.name}}</li>
+            </div>
+        </span>
+
+        <span v-else-if="selected === 2">
+            <div v-for="course in courses">
+                <div v-for="department in departments">
+                    <span v-if="course.department_id === department.id">
+                        <li>{{department.name}} {{course.number}}, Credits: {{course.hours}}</li>
+                    </span>
+                </div>
+            </div>
+        </span>
+
+        <span v-else-if="selected === 3">
+            <div v-for="professor in professors">
+                <li>{{professor.name}}, Office: {{professor.office}}</li>
+            </div>
+        </span>
+
+        <span v-else-if="selected === 4">
+            <div v-for="semester in semesters">
+                <li>{{semester.semester}}</li>
+            </div>
+        </span>
+
+        <span v-else-if="selected === 5">
+            <div v-for="section in sections">
+                <li>{{section.year}}
+                    <span v-for="semester in semesters">
+                        <span v-if="section.semester_id === semester.id">
+                            {{semester.semester}},
+                        </span>
+                    </span>
+                    <span v-for="course in courses">
+                        <span v-if="section.course_id === course.id">
+                            <span v-for="department in departments">
+                                <span v-if="course.department_id === department.id">
+                                    {{department.name}} {{course.number}}:
+                                </span>
+                            </span>
+                        </span>
+                    </span>
+                    <span v-for="professor in professors">
+                        <span v-if="section.professor_id === professor.id">
+                            {{professor.name}}
+                        </span>
+                    </span>
+                </li>
+            </div>
+        </span>
+
+        <span v-else-if="selected === 6">
+            <div v-for="student in students">
+                <li>{{student.name}}</li>
+            </div>
+        </span>
+
+    </ul>
+</div>
+
+<script type="text/javascript">
+    var ItemsVue = new Vue({
+        el: '#Itemlist',
+        data: { departments: [],
+            courses: [],
+            professors: [],
+            semesters: [],
+            sections: [],
+            students: [],
+            selected: 0 },
+        mounted: function() {
+            axios.get('http://localhost:3000/departments.json')
+                .then(response => {this.departments = response.data})
+                .catch(error => {console.log(error)});
+            axios.get('http://localhost:3000/courses.json')
+                .then(response => {this.courses = response.data})
+                .catch(error => {console.log(error)});
+            axios.get('http://localhost:3000/professors.json')
+                .then(response => {this.professors = response.data})
+                .catch(error => {console.log(error)});
+            axios.get('http://localhost:3000/semesters.json')
+                .then(response => {this.semesters = response.data})
+                .catch(error => {console.log(error)});
+            axios.get('http://localhost:3000/sections.json')
+                .then(response => {this.sections = response.data})
+                .catch(error => {console.log(error)});
+            axios.get('http://localhost:3000/students.json')
+                .then(response => {this.students = response.data})
+                .catch(error => {console.log(error)});
+            }
+        });
+</script>
+
+</body>
+</html>
